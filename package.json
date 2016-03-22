@@ -12,8 +12,8 @@
         "type": "git",
         "url": "git+https://github.com/progrape/todo.git"
     },
-    "keywords": [],
-    "author": "",
+    "keywords": ["weui", "todo", "demo"],
+    "author": "jf <xingzhewujiang1999@gmail.com>",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/progrape/todo/issues"

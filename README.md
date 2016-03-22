@@ -28,6 +28,10 @@ npm install
 npm start
 ```
 
+#### 预览
+
+![image](https://cloud.githubusercontent.com/assets/4652816/13950253/cd231aea-f064-11e5-9b20-29353aea242e.png)
+
 #### License
 
 The MIT License(http://opensource.org/licenses/MIT) 

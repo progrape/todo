@@ -1,0 +1,15 @@
+{{each todos as todo i}}
+<label class="weui_cell weui_check_label {{if todo.status == 1}}{{styles['completed']}}{{/if}}" for="{{todo.id}}">
+    <div class="weui_cell_hd">
+        <input type="checkbox" class="weui_check" name="checkbox1" data-id="{{todo.id}}" id="{{todo.id}}"  {{if todo.status == 1}}checked{{/if}}>
+        <i class="weui_icon_checked"></i>
+    </div>
+    <div class="weui_cell_bd weui_cell_primary">
+        {{if todo.status == 1}}
+        <p><s>{{todo.text}}</s></p>
+        {{else}}
+        <p>{{todo.text}}</p>
+        {{/if}}
+    </div>
+</label>
+{{/each}}

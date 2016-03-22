@@ -1,6 +1,6 @@
 #### 简介
 
-todo 是使用 WeUI 构建的一个 Web App 示例。
+todo 是一个使用 WeUI 构建的 Web App 示例。
 
 ![image](https://cloud.githubusercontent.com/assets/4652816/13949910/d212875e-f062-11e5-9b58-f891b5ada8a7.png)
 

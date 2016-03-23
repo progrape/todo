@@ -1,4 +1,5 @@
 const path = require('path');
+const pkg = require('./package.json');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -39,6 +40,7 @@ module.exports = {
     },
     plugins: [
         new webpack.DefinePlugin({
+            VERSION: pkg.version,
             DEBUG: process.env.NODE_ENV !== 'production'
         }),
         new webpack.ProvidePlugin({

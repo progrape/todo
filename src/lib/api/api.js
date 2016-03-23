@@ -1,19 +1,20 @@
 import $ from 'jquery';
 import * as util from '../util/util';
 
-const TODOS = 'todos';
-
 export default {
+    TODOS: 'todos',
     read(){
         return new Promise((resolve, reject) => {
-            const todos = localStorage.getItem(TODOS);
-            resolve(JSON.parse(todos));
+            const todos = localStorage.getItem(this.TODOS);
+            setTimeout(() => {
+                resolve(JSON.parse(todos));
+            }, 1000);
         });
     },
     write(obj){
         return new Promise((resolve, reject) => {
             const str = JSON.stringify(obj);
-            localStorage.setItem(TODOS, str);
+            localStorage.setItem(this.TODOS, str);
             resolve(str);
         });
     }

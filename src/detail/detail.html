@@ -1,0 +1,41 @@
+<h1 class="{{styles['title']}}">TODO</h1>
+<div class="weui_cells weui_cells_form">
+    <div class="weui_cell">
+        <div class="weui_cell_hd">
+            <label for="" class="weui_label {{styles['label']}}">标题</label>
+        </div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <input type="text" class="weui_input" id="title" value="{{todo.title}}">
+        </div>
+        <div class="weui_cell_ft"></div>
+    </div>
+    <div class="weui_cell">
+        <div class="weui_cell_hd">
+            <label for="" class="weui_label {{styles['label']}}">完成时间</label>
+        </div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <input type="datetime-local" class="weui_input" id="finishTime" value="{{todo.finishTime}}">
+        </div>
+        <div class="weui_cell_ft"></div>
+    </div>
+    <div class="weui_cell weui_cell_switch">
+        <div class="weui_cell_bd weui_cell_primary">
+            <p>是否完成</p>
+        </div>
+        <div class="weui_cell_ft">
+            <input class="weui_switch" type="checkbox" id="status" {{if todo.status == 1}}checked{{/if}}>
+        </div>
+    </div>
+</div>
+<div class="weui_cells_title">备注说明</div>
+<div class="weui_cells weui_cells_form">
+    <div class="weui_cell">
+        <div class="weui_cell_bd weui_cell_primary">
+            <textarea class="weui_textarea" id="remark" placeholder="请输入备注说明" rows="3">{{todo.remark}}</textarea>
+        </div>
+    </div>
+</div>
+<div class="weui_btn_area">
+    <a class="weui_btn weui_btn_primary" href="javascript:" id="back">确认</a>
+    <a class="weui_btn weui_btn_warn" href="javascript:" id="delete">删除</a>
+</div>

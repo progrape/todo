@@ -1,15 +1,18 @@
 {{each todos as todo i}}
-<label class="weui_cell weui_check_label {{if todo.status == 1}}{{styles['completed']}}{{/if}}" for="{{todo.id}}">
-    <div class="weui_cell_hd">
+<a href="#/detail/{{todo.id}}" class="weui_cell weui_check_label {{styles['item']}} {{if todo.status == 1}}{{styles['completed']}}{{/if}}">
+    <label class="weui_cell_hd" for="{{todo.id}}">
         <input type="checkbox" class="weui_check" name="checkbox1" data-id="{{todo.id}}" id="{{todo.id}}"  {{if todo.status == 1}}checked{{/if}}>
         <i class="weui_icon_checked"></i>
-    </div>
+    </label>
     <div class="weui_cell_bd weui_cell_primary">
         {{if todo.status == 1}}
-        <p><s>{{todo.text}}</s></p>
+        <p><s>{{todo.title}}</s></p>
         {{else}}
-        <p>{{todo.text}}</p>
+        <p>{{todo.title}}</p>
         {{/if}}
     </div>
-</label>
+    <div class="weui_cell_ft {{styles['remark']}}">
+        {{todo.remark.substring(0, 10)}}
+    </div>
+</a>
 {{/each}}

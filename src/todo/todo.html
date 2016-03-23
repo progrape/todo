@@ -2,10 +2,33 @@
 <div class="weui_cells_title">
     <p>你想干嘛</p>
 </div>
-<div class="weui_cells weui_cells_form weui_cells_checkbox" id="todos">
+<div class="weui_cells weui_cells_form weui_cells_checkbox weui_cells_access" id="todos">
     <div class="weui_cell">
         <div class="weui_cell_bd weui_cell_primary">
             <input class="weui_input" id="todo" type="text" placeholder="What needs to be done ?">
         </div>
     </div>
+    {{each todos as todo i}}
+    <a href="#/detail/{{todo.id}}" class="weui_cell weui_check_label {{styles['item']}} {{if todo.status == 1}}{{styles['completed']}}{{/if}}">
+        <label class="weui_cell_hd" for="{{todo.id}}">
+            <input type="checkbox" class="weui_check" name="checkbox1" data-id="{{todo.id}}" id="{{todo.id}}" {{if todo.status == 1}}checked{{/if}}>
+            <i class="weui_icon_checked"></i>
+        </label>
+        <div class="weui_cell_bd weui_cell_primary">
+            {{if todo.status == 1}}
+            <p><s>{{todo.title}}</s></p>
+            {{else}}
+            <p>{{todo.title}}</p>
+            {{/if}}
+        </div>
+        <div class="weui_cell_ft {{styles['remark']}}">
+            {{todo.remark.substring(0, 10)}}
+        </div>
+    </a>
+    {{/each}}
 </div>
+{{if DEBUG}}
+<div class="weui_btn_area">
+    <a class="weui_btn weui_btn_warn" href="javascript:" id="deleteAll">清空</a>
+</div>
+{{/if}}

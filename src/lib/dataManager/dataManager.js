@@ -1,3 +1,5 @@
+import API from '../api/api';
+
 let data = {};
 
 export default {
@@ -9,6 +11,7 @@ export default {
      */
     setData (key, value){
         data[key] = value;
+        API.write(data);
         return this;
     },
     /**

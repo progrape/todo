@@ -1,6 +1,8 @@
 import $ from 'jquery';
+import 'weui.js';
 import uuid from 'node-uuid';
 import template from 'art-template/dist/template-debug';
+import API from '../lib/api/api';
 import dataManager from '../lib/dataManager/dataManager';
 import * as util from '../lib/util/util';
 import styles from './todo.less';
@@ -8,10 +10,13 @@ import tpl from 'raw!./todo.html';
 import todoItemTpl from 'raw!./todoItem.html';
 
 export default {
-    url: '/:status?',
+    url: '/',
     render: function () {
+        const todos = dataManager.getData(dataManager.TODOS, []);
         return template.compile(tpl)({
-            styles: styles
+            todos: todos,
+            styles: styles,
+            DEBUG: DEBUG
         });
     },
     bind: function () {
@@ -29,27 +34,26 @@ export default {
             $('#todos').append(html);
         }
 
-        $('#container').on('input', '#todo', function () {
-            const value = $(this).val();
-            util.debug('inputting ', value);
-        }).on('keyup', '#todo', function (e) {
+        $('#container').on('keyup', '#todo', function (e) {
             if (e.keyCode === 13) {
                 util.debug('enter');
-                const value = $(this).val();
+                const title = $(this).val();
                 const todos = dataManager.getData(dataManager.TODOS, []);
-                if (!value) {
+                if (!title) {
                     return;
                 }
                 todos.push({
                     id: uuid.v4(),
-                    text: value,
-                    status: 0
+                    title: title,
+                    status: 0,
+                    finishTime: util.getLocalISOString(),
+                    remark: ''
                 });
                 dataManager.setData(dataManager.TODOS, todos);
                 updateTodos();
                 $(this).val('');
             }
-        }).on('change', 'input[type=checkbox]', function () {
+        }).on('change', 'label input[type=checkbox]', function () {
             const isChecked = $(this).is(':checked');
             const id = $(this).data('id');
             util.debug('status change', id, isChecked);
@@ -62,6 +66,13 @@ export default {
             });
             dataManager.setData(dataManager.TODOS, todos);
             updateTodos();
+        }).on('click', '#deleteAll', function () {
+            $.weui.confirm('确定要清空吗?', function (){
+                localStorage.clear(API.TODOS);
+                location.reload();
+            }, function (){
+
+            });
         });
 
         $('#todo').focus();

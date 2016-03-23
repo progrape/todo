@@ -8,7 +8,7 @@ export default {
             const todos = localStorage.getItem(this.TODOS);
             setTimeout(() => {
                 resolve(JSON.parse(todos));
-            }, 1000);
+            }, 500);
         });
     },
     write(obj){

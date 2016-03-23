@@ -55,6 +55,9 @@ export default {
             history.go(-1);
         }).on('click', '#delete', function () {
             $.weui.confirm('确定要删除改任务 ?', function () {
+                const id = router.params.id;
+                const todos = dataManager.getData(dataManager.TODOS, []);
+                let todo = todos.filter(todo => todo.id == id)[0];
                 util.debug('确定删除');
                 dataManager.setData(dataManager.TODOS, util.removeFromArray(todos, todo));
                 history.go(-1);

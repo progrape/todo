@@ -3,7 +3,6 @@ import API from '../api/api';
 let data = {};
 
 export default {
-    TODOS: 'todos',
     /**
      * set data
      * @param {String} key

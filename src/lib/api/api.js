@@ -14,7 +14,7 @@ export default {
     write(obj){
         return new Promise((resolve, reject) => {
             const str = JSON.stringify(obj);
-            localStorage.setItem(this.constant, str);
+            localStorage.setItem(constant.TODOS, str);
             resolve(str);
         });
     }

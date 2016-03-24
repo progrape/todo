@@ -43,7 +43,7 @@ export default {
                 if (!title) {
                     return;
                 }
-                todos.push({
+                todos.unshift({
                     id: uuid.v4(),
                     title: title,
                     status: 0,
